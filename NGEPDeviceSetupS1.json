@@ -1,8 +1,8 @@
 {
   "fileInfo": {
-    "name": "NGEPDeviceSetupS1",
+    "name": "NGEPDeviceSetupS2",
     "fileType": "NGEP Edge Device Setup file",
-    "fileVersion": 1,
+    "fileVersion": 2,
     "description": "NextGen Edge 0.7.0 -- Device Setup",
     "schemaVersion": "v0.9",
     "createdBy": "release 0.7.0",
