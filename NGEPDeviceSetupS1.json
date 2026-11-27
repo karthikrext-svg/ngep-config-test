@@ -1,8 +1,8 @@
 {
   "fileInfo": {
-    "name": "NGEPDeviceSetupS4",
+    "name": "NGEPDeviceSetupS5",
     "fileType": "NGEP Edge Device Setup file",
-    "fileVersion": 4,
+    "fileVersion": 5,
     "description": "NextGen Edge 0.7.0 -- Device Setup",
     "schemaVersion": "v0.9",
     "createdBy": "release 0.7.0",
@@ -98,7 +98,15 @@
           "parity": "None",
           "stopBits": 1
         }
-      }
+      },
+	"LAN": {
+          "modeIP": "Static",
+          "IPv4": {
+            "IPAddress": "192.168.4.10",
+            "Gateway": "192.168.4.1",
+            "Subnet": "255.255.255.0"
+          }
+        }
     }
   },
   "hub": {
