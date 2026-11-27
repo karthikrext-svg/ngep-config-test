@@ -1,0 +1,153 @@
+{
+  "fileInfo": {
+    "name": "NGEPDeviceSetupS1",
+    "fileType": "NGEP Edge Device Setup file",
+    "fileVersion": 1,
+    "description": "NextGen Edge 0.7.0 -- Device Setup",
+    "schemaVersion": "v0.9",
+    "createdBy": "release 0.7.0",
+    "createdDate": "2026-10-20T00:00:00Z"
+  },
+  "setup": {
+    "applicationName": "EdgeDemo",
+    "registration": {
+      "cloudID": "demo-cloud-01",
+      "enableCloudControl": true,
+      "device": {
+        "serial": "TEST_NGEP_GW_001",
+        "manufacturer": "Oxit",
+        "nickName": "bench-edge"
+      },
+      "site": {
+        "name": "Bench Lab",
+        "postalCode": "560001",
+        "elevation": 920,
+        "geoLocation": [
+          12.9716,
+          77.5946
+        ]
+      }
+    },
+    "units": {
+      "pressureUnit": "bar",
+      "temperatureUnit": "C",
+      "currency": "USD"
+    }
+  },
+  "cloudConnection": {
+    "mode": "Wifi",
+    "wifi": {
+      "modeIP": "DHCP",
+      "IPv4": {
+        "IPAddress": "192.168.4.20",
+        "Gateway": "192.168.4.1",
+        "Subnet": "255.255.255.0"
+      },
+      "DNS1": "1.1.1.1"
+    },
+    "brokerHost": "hono-mqtt.scitis-sandbox-1.com",
+    "brokerPort": 8883,
+    "tenant": "argos.gateway",
+    "dataConnection": "timeSeries"
+  },
+  "assetCommSetup": {
+    "setup": {
+      "mainAssetList": [
+        {
+          "name": "Compressor 001",
+          "serial": "TEST_NGEP_COMP_001",
+          "application": {
+            "appType": "compressor",
+            "devMapId": 18572,
+            "devMapFile": "AirSmartG2_TagList.json",
+            "devScanTableFile": "AirSmartG2_TagList.json"
+          },
+          "protocol": {
+            "name": "Modbus RTU",
+            "nodeAddress": 1,
+            "timeout": 5
+          }
+        }
+      ]
+    },
+    "comms": {
+      "commsPort": "RS485",
+      "modbus": {
+        "nodeAddress": 1,
+        "rs485/232": {
+          "baudRate": 9600,
+          "startBits": 1,
+          "dataBits": 8,
+          "parity": "None",
+          "stopBits": 1
+        }
+      }
+    }
+  },
+  "hub": {
+    "setup": {
+      "radioBand": "2.4GHz",
+      "allowPairing": false,
+      "pairingTime": 30,
+      "hubNodeMode": "standalone"
+    }
+  },
+  "node": {
+    "setup": {
+      "radioBandEnable": false,
+      "nodeID": "edge-demo-01"
+    }
+  },
+  "localIO": {
+    "ct": {
+      "application": {
+        "name": "main-ct",
+        "appType": "currentTransformer",
+        "devMapId": 7,
+        "devMapFile": "ct.json"
+      },
+      "minScale": 0,
+      "maxScale": 100,
+      "sampleSpeed": 10
+    },
+    "digitalInput": {
+      "application": {
+        "name": "door-switch",
+        "appType": "switch",
+        "devMapId": 8,
+        "devMapFile": "di.json"
+      },
+      "normalState": "NO",
+      "mode": "maintained",
+      "inputDelay": 0.5
+    }
+  },
+  "builtIn": {
+    "vibration": {
+      "sampleSpeed": 50,
+      "warningHighLimit": 7.5
+    }
+  },
+  "virtualTags": [
+    {
+      "function": "Average",
+      "settings": {
+        "window": 10,
+        "label": "avg-pressure",
+        "enabled": true
+      },
+      "inputs": {
+        "input1": {
+          "deviceName": "AirSmart G2 Compressor",
+          "tagName": "DischargePressure"
+        }
+      },
+      "outputs": {
+        "output1": {
+          "deviceName": "virtual",
+          "tagName": "AvgDischargePressure"
+        }
+      }
+    }
+  ]
+}
