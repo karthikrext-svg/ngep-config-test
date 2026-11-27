@@ -1,8 +1,8 @@
 {
   "fileInfo": {
-    "name": "NGEPDeviceSetupS3",
+    "name": "NGEPDeviceSetupS4",
     "fileType": "NGEP Edge Device Setup file",
-    "fileVersion": 3,
+    "fileVersion": 4,
     "description": "NextGen Edge 0.7.0 -- Device Setup",
     "schemaVersion": "v0.9",
     "createdBy": "release 0.7.0",
@@ -66,6 +66,23 @@
             "name": "Modbus RTU",
             "nodeAddress": 1,
             "timeout": 5
+          }
+        },
+		{
+          "name": "Compressor 002",
+          "serial": "TEST_NGEP_COMP_002",
+          "application": {
+            "appType": "compressor",
+            "devMapId": 18572,
+            "devMapFile": "AirSmartG3_TagList.json",
+            "devScanTableFile": "AirSmartG3_TagList.json"
+          },
+          "protocol": {
+              "name": "Modbus TCP",
+              "nodeAddress": 2,
+              "Port": 502,
+              "timeout": 10,
+              "ipAddress": "192.168.4.50"
           }
         }
       ]
